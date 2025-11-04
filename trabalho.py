@@ -1,9 +1,10 @@
-
-usuarios = [["admin", "123", "ADM"], ["cliente", "123", "CLIENTE"]]
-produtos = []
-servicos = []
+usuarios = [['admin', '123', 'ADM'], ['cliente', '123', 'CLIENTE'],['alisk','1234','ADM' ],['joao','4021','CLIENTE']]
+produtos = [['Shampoo', 35.00],['Ração golden p/ Cães', 149.50],['anti-pulgas', 66.50],['Coleira anti-pulga', 175.00],['Tapete', 70.00]]
+quantidades = [10 , 15 , 15 , 50 , 13]
+servicos = [['Toza', 50.00], ['Banho', 35.99], ['Adestramento', 100.00], ['Veterinario', 153.45]]
 compras = []
-agendamentos = []
+agendamentos = [['toza', '10 hrs'], ['Banho', '12 hrs'], ['toza', '14 hrs'],['Toza','14.30']]
+
 
 print('Olá, amigo(a)')
 print()
@@ -64,14 +65,17 @@ while opcao_principal != '3':
 
             if tipo_usuario == 'ADM':
                 opcao_adm = ''
-                while opcao_adm != '6':
+                while opcao_adm != '8':
                     print('       Menu ADM')
-                    print('1-Cadastrar serviços')
-                    print('2-verificar produtos cadastrados')
+                    print('1-Cadastrar produto')
+                    print('2-Buscar produto cadastrados')
                     print('3-Remover produto')
                     print('4-Cadastar serviços')
                     print('5-Ver serviços')
+                    print('6-Remover serviços')
+                    print('7-quantidade de produtos em estoque')
                     print('0-Sair do Menu adm')
+                    
                     opcao_adm = input('Escolha uma opção')
 
                     if opcao_adm == '1':
@@ -90,7 +94,7 @@ while opcao_principal != '3':
 
                     elif opcao_adm == '3':
                         if len(produtos) == 0:
-                            print('Nwm um produto para remover')
+                            print('Nem um produto para remover')
                         else:
                             for i in range(len(produtos)):
                                 print(f'{i+1} {produtos[i][0]}')
@@ -115,8 +119,38 @@ while opcao_principal != '3':
                             for i in range(len(servicos)):
                                 print(f'{i+1}, {servicos[i][0]}, valor:{[servicos[i][1]]:}')
 
+
+                                        elif opcao_adm == '6':
+                        if len(produtos) == 0:
+                            print('Nem um serviço para remover')
+                        else:
+                            for i in range(len(servicos)):
+                                print(f'{i+1} {servicos[i][0]}')
+                                num = int(input('Digite o numero do serviço para remover:'))
+                                if 1 <= num <= len(servicos):
+                                    servicos.pop(num - 1)
+                                    print('Serviço removido')
+                                else:
+                                    print('Serviço não encontrado')
+
+                    elif opcao_adm == '7':
+                        print('   Estoque')
+                        for i in range(len(produtos)):
+                            print(f'{produtos[i]} - {quantidades[i]} unidades')
+                            item = input('Digite o nome do produto:').lower
+                            if item in produtos:
+                                for i in range(len(produtos)):
+                                    if produtos[i] == item:
+                                        print(f'O produto {item}, tem {quantidades[i]} unidades no estoque.')
+
+                        else:
+                            print('Item não encontrado')
+
+
                     elif opcao_adm == '0':
                         print('Saindo do Menu adm')
+                        break
+                        
                     else:
                         print('Opção invalida')
 
@@ -168,10 +202,11 @@ while opcao_principal != '3':
                         achou = False
                         for c in compras:
                             if c[0] == nome:
-                                print(f'{c[1]} - {c[2]}')
+                               print(f'{c[1]} - {c[2]}')
                                 achou = True
-                                if not achou:
-                                    print('Não há compras no momento.')
+                        if not achou:
+                            print('Não há compras no momento.')
+                            
 
 
                     elif opcao_cliente == '4':
@@ -181,11 +216,13 @@ while opcao_principal != '3':
                             if a[0] == nome:
                                 print(f'Servviços{a[1]}, Horário{a[2]}')
                                 achou = True
-                                if not achou:
-                                    print('Sem agendamentos')
+                        if not achou:
+                            print('Sem agendamentos')
+                            
 
                     elif opcao_cliente == '5':
                         print('Sair do menu Cliente')
+                        break
 
                     else:
                         print('Opçao invalida')
@@ -196,6 +233,7 @@ while opcao_principal != '3':
 
     elif opcao_menu == '0':
         print('Saindo..')
+        break
 
     else:
         print('Opção invalida')
