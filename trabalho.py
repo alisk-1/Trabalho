@@ -22,8 +22,6 @@ while opcao_principal != '3':
     print('0 - Sair')
     opcao_menu= input('Escolha uma opcão:')
 
-
-
     if opcao_menu == '2':
         print('cadastrar usuario')
 
