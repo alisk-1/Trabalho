@@ -6,10 +6,11 @@ compras = []
 agendamentos = [['toza', '10 hrs'], ['Banho', '12 hrs'], ['toza', '14 hrs'],['Toza','14.30']]
 
 
-print('Olá, amigo(a)')
+print('               Olá, amigo(a)')
+print()
+print('          Bem vindo ao PetSertão')
 print()
 inicio = input('Para começar click na tecla enter:')
-print()
 print()
 
 opcao_principal = ''
@@ -154,7 +155,8 @@ while opcao_principal != '3':
                     else:
                         print('Opção invalida')
 
-            elif tipo_usuario =='Cliente':
+            else:
+                tipo_usuario =='Cliente':
                 opcao_cliente = ''
                 while opcao_cliente != '5':
                     print(    f'Bem vindo ao menu do Cliente Sr.(a){nome}')
