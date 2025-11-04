@@ -91,7 +91,7 @@ while opcao_principal != '3':
                             print('Nem um produto encontrado')
                         else:
                             for i in range(len(produtos)):
-                                print(f'{i+1}. {produtos[i][0]} - valor{produtos[i][1]:}')
+                                print(f'{i+1}. {produtos[i][0]} - valor {produtos[i][1]:}')
 
                     elif opcao_adm == '3':
                         if len(produtos) == 0:
