@@ -48,7 +48,7 @@ while opcao_principal != '3':
 
             if tipo_usuario == 'ADM':
                 opcao_adm = ''
-                while opcao_adm != '99':
+                while opcao_adm != '10':
                     mf.menu_adm(print)
                     opcao_adm = input('Escolha uma opção: ')
 
